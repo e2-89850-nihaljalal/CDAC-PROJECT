@@ -1,0 +1,113 @@
+
+// Collected data by nihaljalal2020@gmail.com
+
+PROJECT NAME : Data accession by using RTOS and CAN
+
+
+componant seller ---- https://roboticsdna.in/
+================================================================================================================== 
+                                                    # Project Title
+===================================================================================================================
+
+ Data Accession using RTOS and CAN
+
+
+=================================================================================================================
+                                                       #Objective
+==================================================================================================================
+	
+	To acquire real-time data from multiple sensors using RTOS on one STM32 board.
+Transmit that data to another STM32 board via CAN communication for display or further processing.
+
+
+==================================================================================================================
+                                      # Hardware Architecture
+==================================================================================================================
+
+Board 1 – Sensor Node
+Role: Collect sensor data and send via CAN
+
+Components:
+		STM32F407G-DISC1
+		2–3 Sensors (e.g.Temperature, Humidity, Gas, etc.)
+		RTOS (FreeRTOS)
+		CAN Transceiver-- MCP2551
+----------------------------------------------------------------------		
+Board 2 – Master/Receiver Node
+Role: Receive and display data
+
+Components:
+
+		STM32F407G-DISC1
+		UART (to PC) or LCD/OLED display
+		CAN Transceiver -- MCP2551
+----------------------------------------------------------------------
+
+========================================================================================================================
+                                          # Working Flow
+========================================================================================================================
+1) On Sensor Node (Board 1):
+		RTOS Task 1: Reads Temperature Sensor data
+
+		RTOS Task 2: Reads Humidity Sensor data
+
+		RTOS Task 3: Reads Gas Sensor data
+
+		RTOS Task 4: Formats & transmits data via CAN
+
+2) On Receiver Node (Board 2):
+		RTOS Task 1: Receives CAN messages
+
+		RTOS Task 2: Extracts and formats data
+
+		RTOS Task 3: Displays data on UART or LCD
+
+=======================================================================================================================
+                                               # SENSOR'S
+=======================================================================================================================
+
+--------------------------------------------------------------------------------------------------
+Sensor Type -------Example Model --------------Use Case -------------------------- Interface
+----------------------------------------------------------------------------------------------------
+
+Temperature --------LM35 / DHT11 / DHT22 -----Ambient temperature readings ----- Analog/Digital
+
+Humidity -----------DHT11 / DHT22-------------Humidity monitoring ---------------Digital (1-wire)
+
+Gas ----------------MQ-2 / MQ-135 --------Air quality / gas leakage detection ------Analog
+
+Light ------------ LDR / BH1750 -----------Light intensity measurement ------------- Analog / I2C
+
+Pressure ---------- BMP180 / BMP280 ------- Atmospheric pressure & temperature ------ I2C
+
+Motion ----------- PIR Sensor ---------------Detect human motion --------------------- Digital
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sensor Type                          | Field                                | Application                                         | Use of Your Project
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Temperature Sensor (LM35, DS18B20)   | Industrial, Automotive, Agriculture  | Monitor engine, room, machine, or soil temperature  | Real-time temperature logging; overheat alerts; precision agriculture control
+Vibration Sensor (SW-420, ADXL335)   | Industrial, Automotive               | Detect machinery faults or vehicle accidents        | Predictive maintenance and accident detection through vibration analysis
+Soil Moisture Sensor                 | Agriculture                          | Determine soil moisture levels                      | Automate irrigation systems and reduce water wastage
+Light Sensor (LDR, BH1750)           | Smart Home, Agriculture              | Detect lighting conditions                          | Auto lighting control at home or greenhouse light management
+Gas Sensor (MQ-2, MQ-135)            | Home, Industrial, Environmental      | Detect harmful gases like CO2, smoke, LPG           | Alert system for gas leaks, factory safety, or air quality monitoring
+Humidity Sensor (DHT11, DHT22)       | Agriculture, Home                    | Measure humidity                                    | Maintain optimal plant growth conditions; monitor home environment
+Heart Rate Sensor (MAX30100)         | Healthcare                           | Measure pulse/heart rate                            | Monitor patients’ vitals remotely and send data to a central health system
+SpO2 Sensor                          | Healthcare                           | Check oxygen saturation in blood                    | Critical for patient monitoring in hospitals and remote health systems
+IR/PIR Motion Sensor                 | Smart Home, Security                 | Detect movement                                     | Intrusion detection and automatic lighting in smart homes
+Air Quality Sensor (MQ135)           | Environmental                        | Monitor air quality (CO2, dust, etc.)               | Real-time pollution monitoring; send alerts to authorities or display boards
+Ultrasonic Sensor (HC-SR04)          | Smart Vehicle, Robotics              | Measure distance                                    | Object detection, anti-collision system, and parking assist in vehicles
+Current Sensor (ACS712)              | Industrial, Energy                   | Monitor electrical current                          | Prevent overload, track power usage in machines or households
+pH Sensor                            | Agriculture, Water Management        | Check soil or water pH levels                       | Useful in hydroponics, water treatment, and soil health tracking
+Accelerometer (MPU6050)              | Automotive, Safety                   | Detect movement/tilt/accident                       | Used in crash detection or vehicle dynamics monitoring
+Sound Sensor                         | Environment, Smart City              | Detect noise levels                                 | Noise pollution monitoring system for cities or factories
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
